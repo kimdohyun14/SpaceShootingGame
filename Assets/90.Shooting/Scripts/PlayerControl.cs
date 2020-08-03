@@ -31,7 +31,25 @@ public class PlayerControl : MonoBehaviour
         // 30 FPS : 1초에 30번 호출
         // 매 프레임당 이 게임 오브젝트가 우리가 원하는 속도와 방향으로 이동하는 양.
         Vector3 moveAmount = axis * Speed * -Vector3.right * Time.deltaTime;
-        myTransform.Translate(moveAmount);
+
+        // 플레이어가 해당 카메라를 벗어나지 않도록 해준다.
+        // 플레이어의 x는 -60 ~ 60 사이로만 움직일 수 있게 해주고,
+        if(myTransform.position.x <= 60.0f && myTransform.position.x >= -60.0f)
+        {
+            myTransform.Translate(moveAmount);
+        }
+        // 60을 초과해버리면, 플레이어의 위치를 59로 셋팅해준다.
+        else if(myTransform.position.x > 60.0f)
+        {
+            myTransform.position = new Vector3(59.0f, myTransform.position.y, myTransform.position.z);
+        }
+        // -60으로 미만해버리면, 플레이어의 위치를 -59로 셋팅해준다.
+        else
+        {
+            myTransform.position = new Vector3(-59.0f, myTransform.position.y, myTransform.position.z);
+        }
+        
+        
 
         // [슈팅]
         // space bar 키가 눌렸다면.
