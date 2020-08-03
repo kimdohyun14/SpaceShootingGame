@@ -50,7 +50,9 @@ public class EnemyControl : MonoBehaviour
         // 총알에 맞았다면.
         if(other.tag == "Bullet")
         {
-            Debug.Log("Bullet Trigger Enter");
+            // Enemy를 맞췄다면 점수를 100점씩 증가시킨다.
+            MainControl.Score += 100; 
+            // Debug.Log("Bullet Trigger Enter");
             // 피격 이벤트 생성.
             Instantiate(Explosion, myTransform.position, Quaternion.identity);
 
