@@ -59,5 +59,12 @@ public class EnemyControl : MonoBehaviour
             InitPosition();
             Destroy(other.gameObject);
         }
+
+        if(other.tag == "Player")
+        {
+            //Debug.Log("hit!!");
+            MainControl.Life -= 1;
+            InitPosition();
+        }
     }
 }

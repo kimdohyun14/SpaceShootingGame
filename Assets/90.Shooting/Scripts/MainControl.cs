@@ -23,6 +23,14 @@ public class MainControl : MonoBehaviour
     {
         if(MainControl.Score > 500)
         {
+            MainControl.Life = 3;
+            MainControl.Score = 0;
+            UnityEngine.SceneManagement.SceneManager.LoadScene("victory");
+        }
+
+        if(MainControl.Life <= 0)
+        {
+            MainControl.Life = 3;
             MainControl.Score = 0;
             UnityEngine.SceneManagement.SceneManager.LoadScene("victory");
         }
